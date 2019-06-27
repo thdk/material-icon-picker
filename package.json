@@ -1,0 +1,53 @@
+{
+  "name": "material-design-icon-picker-react",
+  "version": "1.0.0",
+  "description": "React component to pick a valid google icon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "node-sass -r src/scss/style.scss -o dist --importer node_modules/node-sass-import",
+    "sass:production": "npm run sass -- --output-style compressed",
+    "watch:sass": "npm run sass && npm run sass -- -w",
+    "build": "rollup -c",
+    "start": "npm run build && npm run sass && lite-server --baseDir ./dist"
+  },
+  "keywords": [
+    "material",
+    "design",
+    "icons",
+    "icon",
+    "picker",
+    "react",
+    "google",
+    "icons"
+  ],
+  "author": "Thomas Dekiere",
+  "license": "ISC",
+  "peerDependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "@types/react": "^16.8.22",
+    "@types/react-dom": "^16.8.4",
+    "node-sass": "^4.12.0",
+    "node-sass-import": "^2.0.1",
+    "rollup": "^1.16.2",
+    "rollup-plugin-commonjs": "^10.0.1",
+    "rollup-plugin-node-resolve": "^5.1.0",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-typescript": "^1.0.1",
+    "typescript": "^3.5.2",
+    "lite-server": "^2.5.3"
+  },
+  "dependencies": {
+    "@material/react-dialog": "^0.14.0",
+    "@material/react-list": "^0.14.0",
+    "@material/react-material-icon": "^0.14.0"
+  },
+  "sass": {
+    "includePaths": [
+      "./node_modules"
+    ]
+  }
+}
