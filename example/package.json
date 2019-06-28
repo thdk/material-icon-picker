@@ -1,0 +1,19 @@
+{
+  "name": "material-design-icon-picker-react-example",
+  "version": "1.0.0",
+  "description": "Example page using the material-design-icon-picker-react component.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified for example package\" && exit 1",
+    "build": "rollup -c"
+  },
+  "author": "Thomas Dekiere",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"    
+  },
+  "devDependencies": {
+    "rollup": "^1.16.2"
+  }
+}

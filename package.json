@@ -2,7 +2,8 @@
   "name": "material-design-icon-picker-react",
   "version": "1.0.0",
   "description": "React component to pick a valid google icon",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "sass": "node-sass -r src/scss/style.scss -o dist --importer node_modules/node-sass-import",
@@ -36,18 +37,12 @@
     "rollup-plugin-commonjs": "^10.0.1",
     "rollup-plugin-node-resolve": "^5.1.0",
     "rollup-plugin-replace": "^2.2.0",
-    "rollup-plugin-typescript": "^1.0.1",
-    "typescript": "^3.5.2",
-    "lite-server": "^2.5.3"
+    "rollup-plugin-typescript2": "^0.21.2",
+    "typescript": "^3.5.2"
   },
   "dependencies": {
     "@material/react-dialog": "^0.14.0",
-    "@material/react-list": "^0.14.0",
-    "@material/react-material-icon": "^0.14.0"
-  },
-  "sass": {
-    "includePaths": [
-      "./node_modules"
-    ]
+    "@material/react-material-icon": "^0.14.0",
+    "@material/react-text-field": "^0.14.0"
   }
 }

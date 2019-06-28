@@ -1,2 +1,28 @@
 @import '@material/react-dialog/index.scss';
-@import '@material/react-list/index.scss';
+@import '@material/react-text-field/index.scss';
+
+
+.icon-dialog-content {
+    display: flex;
+    flex-direction: column;
+
+    .icon-dialog-content-item {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        height: 3em;
+        align-items: center;
+
+        .icon-dialog-content-item-name {
+            display: inherit;
+        }
+
+        .icon-dialog-content-item-icon {
+            display: inherit;
+            margin-left: 0;
+            margin-right: 32px;
+            width: 24px;
+            height: 24px;
+        }
+    }
+}

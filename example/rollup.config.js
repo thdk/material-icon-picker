@@ -1,36 +1,24 @@
 import resolve from 'rollup-plugin-node-resolve';
 import commonJS from 'rollup-plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
-import replace from 'rollup-plugin-replace';
 
 import pkg from './package.json';
 
 export default {
-    input: 'src/index.ts',
-    output: [{
-        file: pkg.main,
-        format: 'cjs',
+    input: 'src/app.ts',
+    output: {
+        name: 'iconpicker',
+        file: 'app.js',
+        format: 'iife',
         globals: {
             'react': 'React',
             'react-dom': 'ReactDOM'
         }
     },
-    {
-        file: pkg.module,
-        format: 'es',
-        globals: {
-            'react': 'React',
-            'react-dom': 'ReactDOM'
-        }
-    }],
     external: [
-        ...Object.keys(pkg.dependencies || {}),
         ...Object.keys(pkg.peerDependencies || {}),
     ],
     plugins: [
-        replace({
-            'process.env.NODE_ENV': `'${process.env.NODE_ENV || "development"}'`
-        }),
         resolve(),
         commonJS({
             include: 'node_modules/**',
@@ -38,9 +26,9 @@ export default {
                 'node_modules/react/index.js': ['createElement', 'useState'],
                 'node_modules/react-dom/index.js': ['render'],
                 '@material/react-dialog': ['Dialog', 'DialogTitle', 'DialogContent'],
-                '@material/react-text-field': ['TextField', 'HelperText', 'Input'],
+                '@material/react-text-field/dist/index.js': ['TextField', 'HelperText', 'Input'],
                 '@material/react-material-icon/dist/index.js': ['MaterialIcon'],
-
+                '@material/react-dialog/dist/index.js': ['Dialog'],
             }
         }),
         typescript({
