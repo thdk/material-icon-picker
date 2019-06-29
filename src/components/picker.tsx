@@ -4,8 +4,13 @@ import TextField, { HelperText, Input, Props } from '@material/react-text-field/
 import MaterialIcon from '@material/react-material-icon';
 
 import { IconDialog } from './dialog';
+import icons from '../icons';
 
-export const Picker = (props: {textfield: Exclude<Props, "leadingIcon" | "trailingIcon">}) => {
+export interface IIconPickerProps { textfield?: Partial<Pick<HTMLInputElement, "value">> & Omit<Props, "children" | "trailingIcon" | "leadingIcon"> & { editIcon?: string } };
+
+type MyArray = typeof icons[number];
+
+const IconPicker: React.SFC<IIconPickerProps> = (props: IIconPickerProps) => {
     const [state, setState] = useState({
         isOpen: false,
         icon: ''
@@ -13,16 +18,23 @@ export const Picker = (props: {textfield: Exclude<Props, "leadingIcon" | "traili
 
     const { isOpen, icon } = state;
 
-    const {textfield} = props;
+    const {
+        helperText = "Pick your icon",
+        label = null,
+        outlined = false,
+        editIcon = "edit",
+        ...rest
+    } = props.textfield || {};
 
     return (<>
-<TextField {...textfield}
-            label="Icon"
-            helperText={<HelperText>Pick your icon</HelperText>}
+        <TextField
+            helperText={<HelperText>{helperText}</HelperText>}
             leadingIcon={<MaterialIcon role="button" icon={icon}></MaterialIcon>}
             onTrailingIconSelect={() => setState({ icon, isOpen: true })}
             trailingIcon={<MaterialIcon role="button" icon="edit" />}
             outlined={true}
+            label={(label || "Icon").toString()}
+            {...rest}
         ><Input
                 value={icon}
                 onChange={(e: React.FormEvent<HTMLInputElement>) => {
@@ -42,3 +54,7 @@ export const Picker = (props: {textfield: Exclude<Props, "leadingIcon" | "traili
     </>
     );
 };
+
+IconPicker.defaultProps = {};
+
+export default IconPicker;

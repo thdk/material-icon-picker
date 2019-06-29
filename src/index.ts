@@ -1,3 +1,3 @@
-import { Picker } from './components/picker';
+import IconPicker from './components/picker';
 
-export { Picker };
+export default IconPicker;

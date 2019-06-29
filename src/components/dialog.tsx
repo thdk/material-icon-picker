@@ -14,7 +14,7 @@ export const IconDialog = (props: { onClose: (icon: string) => void, selectedIco
         <DialogContent>
             <div className="icon-dialog-content">
                 {icons.map((icon, i) =>
-                    <div className="icon-dialog-content-item" data-mdc-dialog-action={`icon-code-${icon}`}>
+                    <div tabIndex={i} key={i} className="icon-dialog-content-item" data-mdc-dialog-action={`icon-code-${icon}`}>
 
                         <i className="material-icons icon-dialog-content-item-icon">
                             {icon}
