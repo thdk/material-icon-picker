@@ -1,6 +1,6 @@
 {
-  "name": "material-design-icon-picker-react",
-  "version": "1.0.0",
+  "name": "material-icon-picker",
+  "version": "0.0.1",
   "description": "React component to pick a valid google icon",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -10,7 +10,7 @@
     "sass": "node-sass -r src/scss/style.scss -o dist --importer node_modules/node-sass-import",
     "sass:production": "npm run sass -- --output-style compressed",
     "watch:sass": "npm run sass && npm run sass -- -w",
-    "build": "npm run build && npm run sass:production"
+    "build": "rollup -c && npm run sass"
   },
   "keywords": [
     "material",
@@ -44,5 +44,12 @@
     "@material/react-dialog": "^0.14.0",
     "@material/react-material-icon": "^0.14.0",
     "@material/react-text-field": "^0.14.0"
+  },
+  "files": [
+    "./dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thdk/material-icon-picker.git"
   }
 }
