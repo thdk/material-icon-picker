@@ -10,26 +10,31 @@ export interface IIconPickerProps {
     textfield?: Partial<Pick<HTMLInputElement, "value">>
     & Omit<Props, "children" | "trailingIcon" | "leadingIcon" | "helperText">
     & { editIcon?: string, helperTextValue?: string },
+    input: Omit<React.HTMLProps<HTMLInputElement>, "onChange">,
     onChange: (icon: string) => void;
 };
 
 const IconPicker: React.SFC<IIconPickerProps> = (props: IIconPickerProps) => {
-    const [state, setState] = useState({
-        isOpen: false,
-        icon: ''
-    });
-
-    const { isOpen, icon } = state;
+    const {
+        value
+    } = props.input;
 
     const {
         helperTextValue = undefined,
         label = null,
         outlined = false,
         editIcon = "edit",
-        ...rest
+        ...restTextField
     } = props.textfield || {};
 
     const { onChange } = props;
+
+    const [state, setState] = useState({
+        isOpen: false,
+        icon: (value || '').toString()
+    });
+
+    const { isOpen, icon } = state;
 
     React.useEffect(() => {
         // only call onChange if value of inputField is a valid icon
@@ -46,7 +51,7 @@ const IconPicker: React.SFC<IIconPickerProps> = (props: IIconPickerProps) => {
             trailingIcon={<MaterialIcon role="button" icon="edit" />}
             outlined={true}
             label={(label || "Icon").toString()}
-            {...rest}
+            {...restTextField}
         ><Input
                 value={icon}
                 onChange={(e: React.FormEvent<HTMLInputElement>) => {
